@@ -1,2 +1,5 @@
 [DscResource()]
-class MyFile{}
+class MyFile
+{
+    Set(){}
+}
