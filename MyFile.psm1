@@ -2,6 +2,7 @@
 class MyFile
 {
     [DscProperty(Key)]
+    [string]
     $Path
 
     Set(){}
