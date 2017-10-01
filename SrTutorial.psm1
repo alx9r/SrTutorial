@@ -14,6 +14,7 @@ function Invoke-MyFile
         $Ensure = 'Present',
 
         [Parameter(ValueFromPipelineByPropertyName)]
+        [StructuredResource('Key')]
         [string]
         $Path
     )
