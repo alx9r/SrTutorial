@@ -2,6 +2,8 @@ function Invoke-MyFile
 {
     param
     (
+        $Mode,
+
         [Parameter(ValueFromPipelineByPropertyName)]
         [Ensure]
         $Ensure = 'Present',
