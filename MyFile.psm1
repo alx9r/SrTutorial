@@ -1,6 +1,7 @@
 [DscResource()]
 class MyFile
 {
+    [DscProperty()]
     $Ensure
 
     [DscProperty(Key)]
