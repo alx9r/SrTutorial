@@ -17,6 +17,38 @@ function Invoke-MyFile
                    Mandatory)]
         [StructuredResource('Key')]
         [string]
-        $Path
+        $Path,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [NullsafeString]
+        $Content,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $Archive,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $Hidden,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $NoScrubData,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $NotContentIndexed,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $ReadOnly,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $System,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [Nullable[bool]]
+        $Temporary
     )
 }

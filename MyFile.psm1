@@ -9,13 +9,36 @@ class MyFile
     [string]
     $Path
 
+    [DscProperty()]
+    [NullsafeString]
     $Content
+
+    [DscProperty()]
+    [Nullable[bool]]
     $Archive
+
+    [DscProperty()]
+    [Nullable[bool]]
     $Hidden
+
+    [DscProperty()]
+    [Nullable[bool]]
     $NoScrubData
+
+    [DscProperty()]
+    [Nullable[bool]]
     $NotContentIndexed
+
+    [DscProperty()]
+    [Nullable[bool]]
     $ReadOnly
+
+    [DscProperty()]
+    [Nullable[bool]]
     $System
+
+    [DscProperty()]
+    [Nullable[bool]]
     $Temporary
 
     Set(){}
