@@ -2,6 +2,7 @@ function Invoke-MyFile
 {
     param
     (
+        [Mode]
         $Mode,
 
         [Parameter(ValueFromPipelineByPropertyName)]
