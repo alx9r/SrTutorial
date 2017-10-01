@@ -3,7 +3,8 @@ function Invoke-MyFile
     param
     (
         [Parameter(ValueFromPipelineByPropertyName,
-                   Position=1)]
+                   Position=1,
+                   Mandatory)]
         [Mode]
         $Mode,
 
