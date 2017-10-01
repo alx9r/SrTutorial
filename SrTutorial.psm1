@@ -2,6 +2,7 @@ function Invoke-MyFile
 {
     param
     (
+        [Parameter(ValueFromPipelineByPropertyName)]
         [Ensure]
         $Ensure,
 
