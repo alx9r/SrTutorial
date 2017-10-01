@@ -7,7 +7,8 @@ function Invoke-MyFile
         [Mode]
         $Mode,
 
-        [Parameter(ValueFromPipelineByPropertyName)]
+        [Parameter(ValueFromPipelineByPropertyName,
+                   Position=2)]
         [Ensure]
         $Ensure = 'Present',
 
