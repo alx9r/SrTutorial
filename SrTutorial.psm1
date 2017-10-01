@@ -1,1 +1,7 @@
-function Invoke-MyFile{}
+function Invoke-MyFile
+{
+    param
+    (
+        $Path
+    )
+}
