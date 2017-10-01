@@ -3,4 +3,5 @@
     RootModule = 'SrTutorial.psm1'
     DscResourcesToExport = '*'
     NestedModules = 'MyFile.psm1'
+    RequiredModules = 'StructuredResource'
 }

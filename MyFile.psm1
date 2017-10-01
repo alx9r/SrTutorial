@@ -2,6 +2,7 @@
 class MyFile
 {
     [DscProperty()]
+    [Ensure]
     $Ensure
 
     [DscProperty(Key)]
