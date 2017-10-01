@@ -4,7 +4,7 @@ function Invoke-MyFile
     (
         [Parameter(ValueFromPipelineByPropertyName)]
         [Ensure]
-        $Ensure,
+        $Ensure = 'Present',
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]
