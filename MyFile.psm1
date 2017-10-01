@@ -41,7 +41,7 @@ class MyFile
     [Nullable[bool]]
     $Temporary
 
-    Set(){}
-    [bool] Test(){ return $true }
+    Set() { $this | Invoke-MyFile Set }
+    [bool] Test(){ return $this | Invoke-MyFile Test }
     [MyFile] Get(){ return $this }
 }
