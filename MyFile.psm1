@@ -1,6 +1,8 @@
 [DscResource()]
 class MyFile
 {
+    $Ensure
+
     [DscProperty(Key)]
     [string]
     $Path
