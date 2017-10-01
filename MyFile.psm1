@@ -1,1 +1,2 @@
+[DscResource()]
 class MyFile{}
