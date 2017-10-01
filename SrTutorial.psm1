@@ -13,7 +13,8 @@ function Invoke-MyFile
         [Ensure]
         $Ensure = 'Present',
 
-        [Parameter(ValueFromPipelineByPropertyName)]
+        [Parameter(ValueFromPipelineByPropertyName,
+                   Mandatory)]
         [StructuredResource('Key')]
         [string]
         $Path
