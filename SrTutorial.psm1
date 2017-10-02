@@ -58,8 +58,83 @@ function Invoke-MyFile
                 Tester = 'Test-Path'
                 Curer = 'New-Item'
                 Remover = 'Remove-Item'
+                PropertyTester = 'Test-MyFileProperty'
+                PropertyCurer = 'Set-MyFileProperty'
             } |
             Assert-StructuredResourceArgs |
             Invoke-StructuredResource
     }
+}
+
+function Test-MyFileProperty
+{
+    param
+    (
+        $Path,
+        $PropertyName,
+        $Value                
+    )
+    if ( $PropertyName -eq 'Content' )
+    {
+        return $Value -eq (Get-Content $Path -Raw)
+    }
+    Test-FileAttribute @PSBoundParameters
+}
+
+function Set-MyFileProperty
+{
+    param
+    (
+        $Path,
+        $PropertyName,
+        $Value                
+    )
+    if ( $PropertyName -eq 'Content' )
+    {
+        [string]$Value | Out-File $Path -Encoding ascii | Out-Null
+        return
+    }
+    Set-FileAttribute @PSBoundParameters
+}
+
+function Set-FileAttribute
+{
+    param
+    (
+        $Path,
+        $PropertyName,
+        $Value                
+    )
+    # Value is boolean, so we are either setting or clearing the flag
+
+    if ( $Value )
+    {
+        # set the flag
+        [System.IO.File]::SetAttributes($Path,$PropertyName)
+        return
+    }
+
+    # clear the flag
+    [System.IO.File]::SetAttributes($Path,
+        (
+            [System.IO.File]::GetAttributes($Path) -band 
+            (-bnot ([System.IO.FileAttributes]$PropertyName))
+        )
+    )
+}
+
+function Test-FileAttribute
+{
+    param
+    (
+        $Path,
+        $PropertyName,
+        $Value                
+    )
+    # value is boolean, so we are confirming that the flag is either set or cleared
+    (-not $Value) -xor
+    ( 
+        [System.IO.File]::GetAttributes($Path) -band 
+        ([System.IO.FileAttributes]$PropertyName)
+    )
 }
