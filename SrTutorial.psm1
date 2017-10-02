@@ -57,13 +57,19 @@ function Invoke-MyFile
             New-StructuredResourceArgs @{
                 Tester = 'Test-Path'
                 Curer = 'New-Item'
-                Remover = 'Remove-Item'
+                Remover = 'Remove-File'
                 PropertyTester = 'Test-MyFileProperty'
                 PropertyCurer = 'Set-MyFileProperty'
             } |
             Assert-StructuredResourceArgs |
             Invoke-StructuredResource
     }
+}
+
+function Remove-File
+{
+    param($Path)
+    Remove-Item $Path -Force
 }
 
 function Test-MyFileProperty
