@@ -82,9 +82,37 @@ function Test-MyFileProperty
     )
     if ( $PropertyName -eq 'Content' )
     {
-        return $Value -eq (Get-Content $Path -Raw)
+        return $Value -eq (Get-Content $Path -Raw | Remove-TrailingNewlines)
     }
     Test-FileAttribute @PSBoundParameters
+}
+
+Function Remove-TrailingNewlines
+{
+    [CmdletBinding()]
+    param
+    (
+        [parameter(Mandatory,
+                   position = 1,
+                   ValueFromPipeline,
+                   ValueFromPipelineByPropertyName)]
+        [AllowEmptyString()]
+        [string]
+        $InputObject
+    )
+    process
+    {
+        $acc = $InputObject
+        while
+        (
+            $acc[-1] -eq "`n" -or
+            $acc[-1] -eq "`r"
+        )
+        {
+            $acc = $acc.Substring(0,$acc.Length-1)
+        }
+        return $acc
+    }
 }
 
 function Set-MyFileProperty
