@@ -51,4 +51,15 @@ function Invoke-MyFile
         [Nullable[bool]]
         $Temporary
     )
+    process
+    {
+        $MyInvocation |
+            New-StructuredResourceArgs @{
+                Tester = 'Test-Path'
+                Curer = 'New-Item'
+                Remover = 'Remove-Item'
+            } |
+            Assert-StructuredResourceArgs |
+            Invoke-StructuredResource
+    }
 }
